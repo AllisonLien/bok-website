@@ -42,3 +42,29 @@ rightBtn.addEventListener('click', () => {
   filmStrip.scrollBy({ left: 300, behavior: 'smooth' });
 });
 
+
+  // 以 AJAX 送出（不跳頁），顯示成功/失敗
+  const form = document.getElementById('contactForm');
+  const statusEl = document.getElementById('formStatus');
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    statusEl.style.display = 'none';
+
+    try {
+      const data = new FormData(form);
+      const res = await fetch(form.action, { method: form.method, body: data, headers: { 'Accept': 'application/json' }});
+      if (res.ok) {
+        statusEl.textContent = '已送出！我會盡快回覆你 🙌';
+        statusEl.style.display = 'block';
+        form.reset();
+      } else {
+        statusEl.textContent = '送出失敗，請稍後再試';
+        statusEl.style.display = 'block';
+      }
+    } catch (err) {
+      statusEl.textContent = '請再試一次。';
+      statusEl.style.display = 'block';
+    }
+  });
+

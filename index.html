@@ -110,21 +110,34 @@
 </section>
 
 
-  <section id="contact" class="fade">
-    <h2>Contact</h2>
-    <form>
-      <input type="text" placeholder="Your Name">
-      <input type="email" placeholder="Your Email">
-      <textarea rows="4" placeholder="Message"></textarea>
-      <button type="submit">Send</button>
-    </form>
-  </section>
+<section id="contact" class="fade">
+  <h2>Contact</h2>
+
+  <!-- 成功/失敗訊息 -->
+  <p id="formStatus" style="margin-bottom:10px;color:#9b59b6;display:none;"></p>
+
+  <form id="contactForm" action="https://formspree.io/f/你的表單ID" method="POST">
+    <input type="text" name="name" placeholder="Your Name" required />
+    <input type="email" name="_replyto" placeholder="Your Email" required />
+    <textarea name="message" rows="4" placeholder="Message" required></textarea>
+
+    <!-- 防機器人（蜜罐） -->
+    <input type="text" name="_gotcha" style="display:none" />
+
+    <!-- 可選：送出後的導向頁 -->
+    <!-- <input type="hidden" name="_next" value="https://你的網站/thank-you.html" /> -->
+
+    <button type="submit">Send</button>
+  </form>
+</section>
+
+
 
   <!-- Footer -->
   <footer>
     <div class="footer-top">
       <div class="footer-logo">
-        <img src="img/logo.PNG" alt="Rapper Logo">
+        <img src="img/logo.png" alt="Rapper Logo">
         <span>漢堡 BoK🍔</span>
       </div>
 
